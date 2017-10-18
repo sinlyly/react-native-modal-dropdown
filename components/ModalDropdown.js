@@ -5,9 +5,9 @@
 'use strict';
 
 import React, {
-  Component,
+  Component
 } from 'react';
-
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Dimensions,
@@ -22,37 +22,10 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-const PropTypes = require('prop-types');
-
 const TOUCHABLE_ELEMENTS = ['TouchableHighlight', 'TouchableOpacity', 'TouchableWithoutFeedback', 'TouchableNativeFeedback'];
 
 export default class ModalDropdown extends Component {
-  static propTypes = {
-    disabled: PropTypes.bool,
-    defaultIndex: PropTypes.number,
-    defaultValue: PropTypes.string,
-    options: PropTypes.array,
-
-    accessible: PropTypes.bool,
-    animated: PropTypes.bool,
-    showsVerticalScrollIndicator: PropTypes.bool,
-    keyboardShouldPersistTaps: PropTypes.string,
-
-    style: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
-    textStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
-    dropdownStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
-    dropdownTextStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
-    dropdownTextHighlightStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
-
-    adjustFrame: PropTypes.func,
-    renderRow: PropTypes.func,
-    renderSeparator: PropTypes.func,
-
-    onDropdownWillShow: PropTypes.func,
-    onDropdownWillHide: PropTypes.func,
-    onSelect: PropTypes.func
-  };
-
+  
   static defaultProps = {
     disabled: false,
     defaultIndex: -1,
@@ -186,7 +159,6 @@ export default class ModalDropdown extends Component {
       let animationType = this.props.animated ? 'fade' : 'none';
       return (
         <Modal animationType={animationType}
-               visible={true}
                transparent={true}
                onRequestClose={this._onRequestClose.bind(this)}
                supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']}>
@@ -377,6 +349,32 @@ export default class ModalDropdown extends Component {
     />);
   }
 }
+
+ModalDropdown.propTypes = {
+    disabled: PropTypes.bool,
+    defaultIndex: PropTypes.number,
+    defaultValue: PropTypes.string,
+    options: PropTypes.array,
+
+    accessible: PropTypes.bool,
+    animated: PropTypes.bool,
+    showsVerticalScrollIndicator: PropTypes.bool,
+    keyboardShouldPersistTaps: PropTypes.string,
+
+    style: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    textStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    dropdownStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    dropdownTextStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    dropdownTextHighlightStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+
+    adjustFrame: PropTypes.func,
+    renderRow: PropTypes.func,
+    renderSeparator: PropTypes.func,
+
+    onDropdownWillShow: PropTypes.func,
+    onDropdownWillHide: PropTypes.func,
+    onSelect: PropTypes.func
+  };
 
 const styles = StyleSheet.create({
   button: {
